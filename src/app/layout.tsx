@@ -10,6 +10,7 @@ import { cn } from '@/utils/cn';
 import { Analytics } from '@vercel/analytics/react';
 
 import { Navigation } from './navigation';
+import { Providers } from './providers';
 
 import '@/styles/globals.css';
 
@@ -35,15 +36,17 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
       <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
-        <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
-          <AppBar />
-          <main className='relative flex-1'>
-            <div className='relative h-full'>{children}</div>
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
-        <Analytics />
+        <Providers>
+          <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
+            <AppBar />
+            <main className='relative flex-1'>
+              <div className='relative h-full'>{children}</div>
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+          <Analytics />
+        </Providers>
       </body>
     </html>
   );

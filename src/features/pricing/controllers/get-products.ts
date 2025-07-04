@@ -10,7 +10,7 @@ export async function getProducts() {
     .eq('prices.active', true)
     .order('metadata->index')
     .order('unit_amount', { referencedTable: 'prices' });
-
+  console.log(error?.message);
   if (error) {
     console.error(error.message);
   }

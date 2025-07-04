@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { IoPersonCircleOutline } from 'react-icons/io5';
+import { signOut } from 'next-auth/react';
 
 import {
   DropdownMenu,
@@ -11,27 +12,23 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { ActionResponse } from '@/types/action-response';
 
 import { useToast } from './ui/use-toast';
 
-export function AccountMenu({ signOut }: { signOut: () => Promise<ActionResponse> }) {
+export function AccountMenu() {
   const router = useRouter();
   const { toast } = useToast();
 
   async function handleLogoutClick() {
-    const response = await signOut();
-
-    if (response?.error) {
+    try {
+      await signOut({ callbackUrl: '/' });
+      toast({
+        description: 'You have been logged out.',
+      });
+    } catch (error) {
       toast({
         variant: 'destructive',
         description: 'An error occurred while logging out. Please try again or contact support.',
-      });
-    } else {
-      router.refresh();
-
-      toast({
-        description: 'You have been logged out.',
       });
     }
   }
