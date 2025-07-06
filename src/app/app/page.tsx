@@ -1,12 +1,12 @@
 import { redirect } from 'next/navigation';
 
-import { getSession, getCurrentUser } from '@/libs/auth/session';
+import { getSession, getUser } from '@/libs/auth/supabase-auth';
 
 import { AppWelcome } from './components/app-welcome';
 
 export default async function AppPage() {
   const session = await getSession();
-  const user = await getCurrentUser();
+  const user = await getUser();
 
   if (!session || !user) {
     redirect('/login');

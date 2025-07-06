@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { User } from 'next-auth';
+import type { User } from '@supabase/supabase-js';
 import { IoCreate, IoImages, IoStatsChart, IoTime } from 'react-icons/io5';
 
 import { Button } from '@/components/ui/button';
@@ -58,7 +58,7 @@ export function ReturningUserWelcome({ user }: ReturningUserWelcomeProps) {
     <div className='mx-auto max-w-6xl'>
       <div className='mb-8'>
         <h1 className='mb-2 text-4xl font-bold'>
-          Good {getTimeOfDay()}, {user.name?.split(' ')[0] || 'there'}! 👋
+          Good {getTimeOfDay()}, {user.user_metadata?.name?.split(' ')[0] || user.user_metadata?.full_name?.split(' ')[0] || 'there'}! 👋
         </h1>
         <p className='text-xl text-gray-300'>
           Welcome back! Ready to create some amazing banners?

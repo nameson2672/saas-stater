@@ -5,7 +5,7 @@ import { AccountMenu } from '@/components/account-menu';
 import { Logo } from '@/components/logo';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTrigger } from '@/components/ui/sheet';
-import { getSession } from '@/libs/auth/session';
+import { getSession } from '@/libs/auth/supabase-auth';
 
 export async function Navigation() {
   const session = await getSession();

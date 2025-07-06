@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { IoPersonCircleOutline } from 'react-icons/io5';
-import { signOut } from 'next-auth/react';
+import { createSupabaseClient } from '@/libs/supabase/supabase-client';
 
 import {
   DropdownMenu,
@@ -18,10 +18,19 @@ import { useToast } from './ui/use-toast';
 export function AccountMenu() {
   const router = useRouter();
   const { toast } = useToast();
+  const supabase = createSupabaseClient();
 
   async function handleLogoutClick() {
     try {
-      await signOut({ callbackUrl: '/' });
+      const { error } = await supabase.auth.signOut();
+      
+      if (error) {
+        throw error;
+      }
+      
+      router.push('/');
+      router.refresh();
+      
       toast({
         description: 'You have been logged out.',
       });

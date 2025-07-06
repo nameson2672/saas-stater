@@ -6,7 +6,7 @@ import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-clie
 import { ActionResponse } from '@/types/action-response';
 import { getURL } from '@/utils/get-url';
 
-export async function signInWithOAuth(provider: 'github' | 'google'): Promise<ActionResponse> {
+export async function signInWithOAuth(provider: 'github' | 'google' | 'azure'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();
 
   const { data, error } = await supabase.auth.signInWithOAuth({
@@ -17,11 +17,15 @@ export async function signInWithOAuth(provider: 'github' | 'google'): Promise<Ac
   });
 
   if (error) {
-    console.error(error);
+    console.error(`OAuth error for ${provider}:`, error);
     return { data: null, error: error };
   }
 
-  return redirect(data.url);
+  if (data.url) {
+    redirect(data.url);
+  }
+
+  return { data: null, error: new Error('No redirect URL received') };
 }
 
 export async function signInWithEmail(email: string): Promise<ActionResponse> {

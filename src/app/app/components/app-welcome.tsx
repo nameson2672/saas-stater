@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { User } from 'next-auth';
+import type { User } from '@supabase/supabase-js';
 
 import { Container } from '@/components/container';
 
@@ -19,7 +19,7 @@ export function AppWelcome({ user }: AppWelcomeProps) {
     // Check if user is new by looking at local storage or user creation date
     const checkUserStatus = () => {
       const lastVisit = localStorage.getItem('lastAppVisit');
-      const userCreatedAt = user.id; // You might want to get actual creation date from DB
+      const userCreatedAt = user.created_at; // User creation date from Supabase
       
       if (!lastVisit) {
         // First time visiting the app

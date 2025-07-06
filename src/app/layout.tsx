@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5';
 
 import { Logo } from '@/components/logo';
+import { UserInfo } from '@/components/user-info';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/utils/cn';
 import { Analytics } from '@vercel/analytics/react';
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en'>
-      <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)}>
+      <body className={cn('font-sans antialiased', montserrat.variable, montserratAlternates.variable)} suppressHydrationWarning={true}>
         <Providers>
           <div className='m-auto flex h-full max-w-[1440px] flex-col px-4'>
             <AppBar />
@@ -55,7 +56,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
 async function AppBar() {
   return (
     <header className='flex items-center justify-between py-8'>
-      <Logo />
+      <div className='flex items-center gap-4'>
+        <Logo />
+        <UserInfo />
+      </div>
       <Navigation />
     </header>
   );

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { User } from 'next-auth';
+import type { User } from '@supabase/supabase-js';
 import { IoCheckmarkCircle, IoCreate, IoImages, IoSettings, IoStatsChart } from 'react-icons/io5';
 
 import { Button } from '@/components/ui/button';
@@ -63,7 +63,7 @@ export function NewUserOnboarding({ user }: NewUserOnboardingProps) {
     <div className='mx-auto max-w-4xl'>
       <div className='mb-8 text-center'>
         <h1 className='mb-4 text-4xl font-bold'>
-          Welcome to the app, {user.name?.split(' ')[0] || 'there'}! 🎉
+          Welcome to the app, {user.user_metadata?.name?.split(' ')[0] || user.user_metadata?.full_name?.split(' ')[0] || 'there'}! 🎉
         </h1>
         <p className='text-xl text-gray-300'>
           Let's get you started with a quick tour of the main features.
