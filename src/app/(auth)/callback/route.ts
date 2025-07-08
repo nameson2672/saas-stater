@@ -3,8 +3,8 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { getURL } from '@/utils/get-url';
+import { createSupabaseServerClient } from '@/core/database/supabase/supabase-server-client';
+import { getURL } from '@/shared/utils';
 
 const siteUrl = getURL();
 

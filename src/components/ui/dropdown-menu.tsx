@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { cn } from '@/utils/cn';
+import { cn } from '@/shared/utils';
 import * as DropdownMenuPrimitive from '@radix-ui/react-dropdown-menu';
 import { CheckIcon, ChevronRightIcon, DotFilledIcon } from '@radix-ui/react-icons';
 

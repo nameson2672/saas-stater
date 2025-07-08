@@ -1,10 +1,10 @@
 import Stripe from 'stripe';
 
-import { upsertUserSubscription } from '@/features/account/controllers/upsert-user-subscription';
+import { upsertUserSubscription } from '@/core/account/controllers/upsert-user-subscription';
+import { stripeAdmin } from '@/core/payments';
 import { upsertPrice } from '@/features/pricing/controllers/upsert-price';
 import { upsertProduct } from '@/features/pricing/controllers/upsert-product';
-import { stripeAdmin } from '@/libs/stripe/stripe-admin';
-import { getEnvVar } from '@/utils/get-env-var';
+import { getEnvVar } from '@/shared/utils';
 
 const relevantEvents = new Set([
   'product.created',

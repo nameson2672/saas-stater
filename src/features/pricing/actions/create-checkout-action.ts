@@ -2,11 +2,11 @@
 
 import { redirect } from 'next/navigation';
 
-import { getOrCreateCustomer } from '@/features/account/controllers/get-or-create-customer';
-import { getSession } from '@/features/account/controllers/get-session';
+import { getOrCreateCustomer } from '@/core/account/controllers/get-or-create-customer';
+import { getSession } from '@/core/account/controllers/get-session';
 import { Price } from '@/features/pricing/types';
-import { stripeAdmin } from '@/libs/stripe/stripe-admin';
-import { getURL } from '@/utils/get-url';
+import { stripeAdmin } from '@/core/payments';
+import { getURL } from '@/shared/utils';
 
 export async function createCheckoutAction({ price }: { price: Price }) {
   // 1. Get the user from session

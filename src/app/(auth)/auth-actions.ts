@@ -2,9 +2,9 @@
 
 import { redirect } from 'next/navigation';
 
-import { createSupabaseServerClient } from '@/libs/supabase/supabase-server-client';
-import { ActionResponse } from '@/types/action-response';
-import { getURL } from '@/utils/get-url';
+import { createSupabaseServerClient } from '@/core/database/supabase/supabase-server-client';
+import { ActionResponse } from '@/shared/types';
+import { getURL } from '@/shared/utils';
 
 export async function signInWithOAuth(provider: 'github' | 'google' | 'azure'): Promise<ActionResponse> {
   const supabase = await createSupabaseServerClient();

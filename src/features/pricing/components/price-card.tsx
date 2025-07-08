@@ -4,9 +4,9 @@ import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import { IoCheckmark } from 'react-icons/io5';
 
-import { SexyBoarder } from '@/components/sexy-boarder';
-import { Button } from '@/components/ui/button';
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { SexyBorder } from '@/shared/components';
+import { Button } from '@/components/ui';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui';
 
 import { PriceCardVariant, productMetadataSchema } from '../models/product-metadata';
 import { BillingInterval, Price, ProductWithPrices } from '../types';
@@ -122,9 +122,9 @@ export function WithSexyBorder({
 }: React.ButtonHTMLAttributes<HTMLButtonElement> & { variant: PriceCardVariant }) {
   if (variant === 'pro') {
     return (
-      <SexyBoarder className={className} offset={100}>
+      <SexyBorder className={className} offset={100}>
         {children}
-      </SexyBoarder>
+      </SexyBorder>
     );
   } else {
     return <div className={className}>{children}</div>;

@@ -1,16 +1,16 @@
 'use client';
 
+import { FormEvent, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FormEvent, useState } from 'react';
 import { FaMicrosoft } from 'react-icons/fa';
 import { IoLogoGithub, IoLogoGoogle } from 'react-icons/io5';
 
-import { Button } from '@/components/ui/button';
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible';
-import { Input } from '@/components/ui/input';
-import { toast } from '@/components/ui/use-toast';
-import { ActionResponse } from '@/types/action-response';
+import { Button } from '@/components/ui';
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui';
+import { Input } from '@/components/ui';
+import { toast } from '@/components/ui';
+import { ActionResponse } from '@/shared/types';
 
 const titleMap = {
   login: 'Login to UPDATE_THIS_WITH_YOUR_APP_DISPLAY_NAME',

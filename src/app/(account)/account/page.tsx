@@ -1,10 +1,20 @@
 import { PropsWithChildren, ReactNode } from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 
-import { Button } from '@/components/ui/button';
-import { getSession } from '@/features/account/controllers/get-session';
-import { getSubscription } from '@/features/account/controllers/get-subscription';
+import { generateMetadata as generateSEOMetadata } from '@/shared/utils';
+
+export const metadata: Metadata = generateSEOMetadata({
+  title: 'Account Settings',
+  description: 'Manage your BannerCraft AI account, subscription, and billing settings. View your current plan and upgrade options.',
+  canonical: '/account',
+  noIndex: true, // Don't index private account pages
+});
+
+import { Button } from '@/components/ui';
+import { getSession } from '@/core/account/controllers/get-session';
+import { getSubscription } from '@/core/account/controllers/get-subscription';
 import { PricingCard } from '@/features/pricing/components/price-card';
 import { getProducts } from '@/features/pricing/controllers/get-products';
 import { Price, ProductWithPrices } from '@/features/pricing/types';

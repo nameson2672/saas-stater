@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 import { PricingCard } from '@/features/pricing/components/price-card';
-import { ProductWithPrices } from '../types';
 
 import { createCheckoutAction } from '../actions/create-checkout-action';
+import { ProductWithPrices } from '../types';
 
 export async function PricingSection({ isPricingPage }: { isPricingPage?: boolean }) {
   const mockProducts: ProductWithPrices[] = [
